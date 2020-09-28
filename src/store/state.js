@@ -4,5 +4,8 @@ export default{
     single,
     multipart,
     str:[],
-    cuotiji:[]
+    //答题记录
+    cuotiji:[],
+    //答题记录单个详细信息index
+    ind:-1
 }

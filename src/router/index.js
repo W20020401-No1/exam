@@ -5,6 +5,8 @@ import Multil from '../views/Multil.vue'
 import Comprehensive from '../views/Comprehensive.vue'
 import Home from '../views/Home.vue'
 import Search from '../views/Search.vue'
+import CuoTiJi from '../views/CuoTiJi.vue'
+import DaTiXiangQing from '../views/DaTiXiangQing.vue'
 
 
 
@@ -14,6 +16,14 @@ const routes = [
   {
     path:'/search',
     component:Search
+  },
+  {
+    path:'/DaTiXiangQing',
+    component:DaTiXiangQing
+  },
+  {
+    path:'/cuotiji',
+    component:CuoTiJi
   },
   {
     path: '/single',

@@ -16,5 +16,15 @@ export default {
             }
         })
         console.log(state.str);
+    },
+    //添加答题记录
+    ADD(state,s){
+        console.log(s);
+        state.cuotiji.push(s)
+    },
+    //查看详情记录
+    IND(state,s){
+        console.log(s);
+        state.ind=s
     }
 }

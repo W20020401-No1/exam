@@ -191,7 +191,7 @@
 </template>
 <script>
 import "./js/jquery-3.3.1.min.js";
-import { mapState } from "vuex";
+import { mapState,mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -271,6 +271,7 @@ export default {
       //获得前一题已选择的答案
       this.choose = this.results.get(this.now);
     },
+    ...mapActions(['adds']),
     score() {
       let count = 0;
       for (let entry of this.results) {
@@ -296,6 +297,7 @@ export default {
       this.results.forEach((aa) => {
         this.ss.push(aa);
       });
+      this.adds({ti:this.timu,daan:this.ss});
     },
   },
   mounted() {
