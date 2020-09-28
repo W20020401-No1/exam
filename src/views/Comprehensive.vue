@@ -6,7 +6,7 @@
         <p class="lead">选择题</p>
       </div>
     </div>
-    <div id="app" class="container">
+    <div id="app" >
       <div class="progress">
         <div
           class="progress-bar progress-bar-striped bg-warning"
