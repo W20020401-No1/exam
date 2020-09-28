@@ -29,8 +29,8 @@ export default {
       questionList: [
         {
           id: 1,
-          title: "最好的编程语言？",
-          items: ["PHP", "C", "JS", "Java", "Go"],
+          title: "最长的河?",
+          items: ["尼罗河", "亚马逊河", "长江", "黄河", "多瑙河"],
           answer: "A",
         },
         {
