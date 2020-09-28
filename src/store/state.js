@@ -3,5 +3,6 @@ import multipart from "./json/multipart.json";
 export default{
     single,
     multipart,
-    str:[]
+    str:[],
+    cuotiji:[]
 }
