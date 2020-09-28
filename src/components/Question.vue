@@ -81,7 +81,7 @@ export default {
   },
   data() {
     return {
-      answer: undefined,
+      answer:[ undefined],
       itemIndexs: ["A", "B", "C", "D", "E"],
       current: 0,
       a: new Map(),

@@ -1,7 +1,7 @@
 <template>
   <div class="progress">
       <div 
-        class="progress-bar progress-bar-striped progress-bar-animated bg-success" 
+        class="progress-bar progress-bar-striped progress-bar-animated bg-warning" 
         role="progressbar"
         :style="styleValue" 
         aria-valuenow="25" 
