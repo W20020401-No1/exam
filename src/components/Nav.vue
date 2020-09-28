@@ -28,21 +28,44 @@
        </li>
      </ul>
      <form class="form-inline my-2 my-lg-0">
-       <input class="form-control mr-sm-2" type="text" placeholder="Search">
-       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+       <input
+            class="form-control mr-sm-2"
+            type="text"
+            placeholder="搜索题目、用户"
+            v-model="timu"
+          />
+          <div @click="add">
+            <router-link
+              class="btn btn-outline-danger my-2 my-sm-0"
+              type="submit"
+              to="/search"
+              :key="$route.fullPath"
+              >搜索</router-link
+            >
+          </div>
      </form>
    </div>
  </nav>
 </template>
  
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "NavBar",
   data() {
     return {
       title: "线上测试",
-      
+      timu: "",
     };
+  },
+  methods: {
+    ...mapActions(["strs"]),
+    add: function () {
+      if (this.timu != "") {
+        this.strs(this.timu);
+        this.timu = "";
+      }
+    },
   },
 };
 </script>

@@ -4,12 +4,17 @@ import Single from '../views/Single.vue'
 import Multil from '../views/Multil.vue'
 import Comprehensive from '../views/Comprehensive.vue'
 import Home from '../views/Home.vue'
+import Search from '../views/Search.vue'
 
 
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path:'/search',
+    component:Search
+  },
   {
     path: '/single',
     name: 'Single',
