@@ -24,7 +24,7 @@
                 </label>
               </div>
             </div>
-                <p class="text-center">正确答案：{{item.right}}</p>
+                <p class="text-center">正确答案：<span class="badge badge-warning">{{item.right}}</span></p>
             </div>  
         </div>
       </div>
