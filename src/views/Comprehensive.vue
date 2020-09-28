@@ -178,7 +178,7 @@ export default {
   computed: {
     ...mapState(['single','multipart']),
     pwidth() {
-      return ((this.now+1) / this.timu.length) * 100;
+      return (this.now / this.timu.length) * 100;
     },
   },
   watch: {
