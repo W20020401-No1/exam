@@ -28,16 +28,39 @@
               >
               <span v-else class="badge badge-pill badge-primary">{{ v }}</span>
             </td>
-            <td  >
+            <td>
               {{ v === correct(k) ? 20 : 0 }}
             </td>
           </tr>
           <tr class="h3">
             <td colspan="3">总成绩</td>
-            <td >{{ score }}</td>
+            <td>{{ score }}</td>
           </tr>
         </tbody>
       </table>
+      <button v-if="isShow" type="button" class="btn btn-primary" @click="show">
+        显示详情
+      </button>
+      
+      <button v-else type="button" class="btn btn-primary" @click="show">
+        收起
+      </button>
+    </div>
+    <div v-if="!isShow">
+    <div  v-for="(t, index) in qlist" :key="index">
+      <div class="card">
+        <div class="card-body">
+          <p>{{ t.id }}、{{ t.title }}</p>
+          <hr />
+          <div v-for="(a,i) in t.items" :key="i">
+            <span class="badge badge-pill badge-primary mr-2">{{
+          itemIndexs[i]
+        }}</span>{{a}}
+          </div>
+          <div class="float-right">正确答案为：{{t.answer}}</div>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </template>
@@ -52,9 +75,19 @@ export default {
   data() {
     return {
       score: 0,
+      isShow: true,
+       itemIndexs: ["A", "B", "C", "D", "E"]
     };
   },
-  methods: {},
+  methods: {
+    show: function () {
+      if (this.isShow) {
+        this.isShow = false;
+      } else {
+        this.isShow = true;
+      }
+    },
+  },
   computed: {
     correct() {
       return function (id) {
