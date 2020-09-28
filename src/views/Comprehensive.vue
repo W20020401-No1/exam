@@ -297,7 +297,7 @@ export default {
       this.results.forEach((aa) => {
         this.ss.push(aa);
       });
-      this.adds({ti:this.timu,daan:this.ss});
+      this.adds({ti:this.timu,daan:this.ss,total:this.total});
     },
   },
   mounted() {

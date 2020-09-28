@@ -2,7 +2,9 @@
   <div>
     <div class="jumbotron">
       <h1 class="display-3">答题详情</h1>
-      <router-link type="button" class="btn btn-danger float-right" to="cuotiji">返回答题记录</router-link>
+      <router-link type="button" class="btn btn-danger float-right" to="cuotiji"
+        >返回答题记录</router-link
+      >
     </div>
     <div>
       <div class="card">
@@ -28,9 +30,17 @@
             </div>
             <p class="text-center">
               你的答案：<span class="badge badge-warning">{{
-                cuotiji[ind].daan[index].length=== 0 ? "无":cuotiji[ind].daan[index]
+                cuotiji[ind].daan[index].length === 0
+                  ? "无"
+                  : cuotiji[ind].daan[index]
               }}</span>
+              <span class="float-right"
+                >正确答案：<span class="badge badge-warning">{{
+                  item.right
+                }}</span></span
+              >
             </p>
+            <p class="text-center"></p>
           </div>
         </div>
       </div>

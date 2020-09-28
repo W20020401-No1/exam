@@ -10,16 +10,19 @@
           {{ v.title }}
         </h4>
       </div>
-      <span class="text-center"
-        >第{{ index + 1 }}次答题<span @click="add(index)"
+      <div class="text-center display-4">
+        第{{ index + 1 }}次答题分数：<span class="text-danger">{{
+          item.total
+        }}</span>
+      </div>
+      <button @click="add(index)" 
           ><router-link
             type="button"
             to="DaTiXiangQing"
-            class="btn btn-primary float-right"
+            class="btn btn-primary btn-block float-right mb-0 align-middle"
             >查看详情</router-link
-          ></span
+          ></button
         >
-      </span>
     </div>
   </div>
 </template>
