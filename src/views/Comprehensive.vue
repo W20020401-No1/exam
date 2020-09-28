@@ -53,10 +53,10 @@
               type="button"
               name=""
               id=""
-              class="btn btn-success btn-lg btn-block mt-3"
+              :class="['btn', ms?'btn-danger':'btn-success', 'btn-lg', 'btn-block', 'mt-3']"
               @click="xianshi"
             >
-              显示题目
+              {{xianshis}}
             </button>
           </div>
           <!--正确答案与用户提交答案的对比-->
@@ -181,7 +181,7 @@
             </div>
             <p class="text-center">
               你的答案： <span class="badge badge-warning">{{ ss[index].length === 0 ? "无" : ss[index] }}</span>
-              <span class="float-right">正确答案：<span class="badge badge-warning">{{ item.right }}</span></span>
+              <span class="float-right">正确答案：<span class="badge badge-warning">{{item.right }}</span></span>
             </p>
           </div>
         </div>
@@ -208,6 +208,7 @@ export default {
       ss: [],
       yanse: [],
       ms: false,
+      xianshis:'显示题目'
     };
   },
   computed: {
@@ -237,6 +238,13 @@ export default {
   methods: {
     xianshi() {
       this.ms = !this.ms;
+      if(this.ms){
+        this.xianshis='关闭显示'
+
+      }else{
+        this.xianshis='显示题目'
+
+      }
     },
     next() {
       //记录当前题的答案
