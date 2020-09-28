@@ -6,7 +6,7 @@
         <p class="lead">选择题</p>
       </div>
     </div>
-    <div id="app" >
+    <div id="app">
       <div class="progress">
         <div
           class="progress-bar progress-bar-striped bg-warning"
@@ -17,6 +17,7 @@
         </div>
       </div>
       <div class="jumbotron mt-3">
+        <!-- 提交答题后页面 -->
         <div class="container" v-if="finished">
           <div class="row mt-2 pt-2">
             <h1 class="display-3">完成</h1>
@@ -48,6 +49,15 @@
                 >
               </div>
             </div>
+            <button
+              type="button"
+              name=""
+              id=""
+              class="btn btn-success btn-lg btn-block mt-3"
+              @click="xianshi"
+            >
+              显示题目
+            </button>
           </div>
           <!--正确答案与用户提交答案的对比-->
           <div class="row mt-2 pt-2" v-else>
@@ -152,12 +162,36 @@
           </div>
         </div>
       </div>
+      <div class="card" v-if="ms">
+        <div v-for="(item, index) in timu" :key="index" class="card-body">
+          <h1 class="display-3 text-left">
+            {{ item.title }}
+          </h1>
+          <div>
+            <hr class="my-4" />
+            <div class="row mt-2 pt-2" v-for="a in item.ans" :key="a">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <span class="badge badge-pill badge-primary">{{
+                    String(Object.keys(a))
+                  }}</span>
+                  {{ String(Object.values(a)) }}
+                </label>
+              </div>
+            </div>
+            <p class="text-center">
+              你的答案： <span class="badge badge-warning">{{ ss[index].length === 0 ? "无" : ss[index] }}</span>
+              <span class="float-right">正确答案：<span class="badge badge-warning">{{ item.right }}</span></span>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import "./js/jquery-3.3.1.min.js";
-import { mapState } from 'vuex';
+import { mapState } from "vuex";
 export default {
   data() {
     return {
@@ -173,10 +207,11 @@ export default {
       //答案结果
       ss: [],
       yanse: [],
+      ms: false,
     };
   },
   computed: {
-    ...mapState(['single','multipart']),
+    ...mapState(["single", "multipart"]),
     pwidth() {
       return (this.now / this.timu.length) * 100;
     },
@@ -200,6 +235,9 @@ export default {
     },
   },
   methods: {
+    xianshi() {
+      this.ms = !this.ms;
+    },
     next() {
       //记录当前题的答案
       this.results.set(this.now, this.choose);
