@@ -10,5 +10,8 @@ export default {
     //传递详情index
     inds({ commit }, i) {
         commit('IND', i)
+    },
+    addct({ commit }, s) {
+        commit('mistake', s);
     }
 }

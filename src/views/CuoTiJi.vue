@@ -15,14 +15,14 @@
           item.total
         }}</span>
       </div>
-      <button @click="add(index)" 
-          ><router-link
-            type="button"
-            to="DaTiXiangQing"
-            class="btn btn-primary btn-block float-right mb-0 align-middle"
-            >查看详情</router-link
-          ></button
+      <button @click="add(index)">
+        <router-link
+          type="button"
+          to="DaTiXiangQing"
+          class="btn btn-primary btn-block float-right mb-0 align-middle"
+          >查看详情</router-link
         >
+      </button>
     </div>
   </div>
 </template>
