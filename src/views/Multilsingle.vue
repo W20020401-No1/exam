@@ -20,24 +20,27 @@ export default {
   },
   data() {
     return {
+      eql: true,
       isDone: false,
       questions: new Map(),
       qlist: [],
-      q:[],
-      score:0
+      q: [],
+      score: 0,
     };
   },
   methods: {
-    ...mapActions(["adds"]),
-    finish: function (q, l) {
-      this.isDone = true
-      this.questions = q
-      this.qlist = l
+    ...mapActions(["adds", "addct"]),
+    finish: function (qe, l) {
+      this.isDone = true;
+      this.questions = qe;
+      this.qlist = l;
       // 其他
       //
       for (const q of this.qlist) {
-        
-        if (q.right.tostring('') === this.questions.get(q.id).tostring('')) {
+        console.log("答案=" + q.right.toString());
+        //console.log("自己答案=" + this.questions.get(q.id).toString());
+        //q.right.toString() === this.questions.get(q.id).toString()
+        if (q.right.toString() === this.questions.get(q.id).sort().toString()) {
           this.score += 20;
         }
       }
@@ -45,6 +48,7 @@ export default {
         this.q.push(a);
       });
       this.adds({ ti: this.qlist, daan: this.q, total: this.score });
+      this.addct({ ti: this.qlist, daan: this.q, total: this.score });
     },
   },
 };
