@@ -41,32 +41,38 @@
       <button v-if="isShow" type="button" class="btn btn-primary" @click="show">
         显示详情
       </button>
-      
+
       <button v-else type="button" class="btn btn-primary" @click="show">
         收起
       </button>
     </div>
     <div v-if="!isShow">
-    <div  v-for="(t, index) in qlist" :key="index">
-      <div class="card">
-        <div class="card-body">
-          <p>{{ t.id }}、{{ t.title }}</p>
-          <hr />
-          <div v-for="(a,i) in t.items" :key="i">
-            <span class="badge badge-pill badge-primary mr-2">{{
-          itemIndexs[i]
-        }}</span>{{a}}
+      <div v-for="(t, index) in qlist" :key="index">
+        <div class="card">
+          <div class="card-body">
+            <p>{{ t.id }}、{{ t.title }}</p>
+            <hr />
+            <div v-for="(a, i) in t.ans" :key="i">
+              <span class="badge badge-pill badge-primary">{{
+                String(Object.keys(a))
+              }}</span>
+              {{ String(Object.values(a)) }}
+            </div>
+            <p class="text-center">
+            <span >你的答案：<span class="badge badge-warning">{{answers.get(t.id)}}</span></span>
+            <span class="float-right">正确答案：<span class="badge badge-warning">{{t.right}}</span></span>
+            </p>
           </div>
-          <div class="float-right">正确答案为：{{t.answer}}</div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </template>
  
 <script>
+
 export default {
+    
   name: "Score",
   props: {
     answers: Map,
@@ -76,7 +82,7 @@ export default {
     return {
       score: 0,
       isShow: true,
-       itemIndexs: ["A", "B", "C", "D", "E"]
+      q: [],
     };
   },
   methods: {
@@ -89,22 +95,27 @@ export default {
     },
   },
   computed: {
+  
     correct() {
       return function (id) {
         for (const i of this.qlist) {
           if (i.id == id) {
-            return i.answer;
+            return i.right;
           }
         }
       };
+      
     },
+    
   },
   created() {
     for (const q of this.qlist) {
-      if (q.answer === this.answers.get(q.id)) {
+      if (q.right === this.answers.get(q.id)) {
         this.score += 20;
       }
     }
+    
   },
+  
 };
 </script>

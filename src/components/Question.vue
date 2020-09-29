@@ -8,7 +8,7 @@
     <hr class="my-2" />
     <!-- 选项 -->
     <div
-      v-for="(item, index) in currentQuestion.items"
+      v-for="(item, index) in currentQuestion.ans"
       :key="index"
       class="form-check my-3"
     >
@@ -19,12 +19,12 @@
           type="radio"
           class="form-check-input"
           name="item"
-          :value="itemIndexs[index]"
+          :value="String(Object.keys(item))"
         />
-        <span class="badge badge-pill badge-danger mr-2">{{
-          itemIndexs[index]
+        <span class="badge badge-pill badge-primary">{{
+          String(Object.keys(item))
         }}</span>
-        {{ item }}
+        {{ String(Object.values(item)) }}
       </label>
     </div>
     <!-- 按钮 -->
@@ -55,34 +55,36 @@
       </div>
     </div>
     <div class="mt-4">
-    <span v-for="(item, index) in list" :key="index" >
-      <button
-        @click="skip(index)"
-        v-if="a.has(index + 1)"
-        type="button"
-        class="btn btn-primary"
-      >
-        {{ index + 1 }}
-      </button>
+      <span v-for="(item, index) in list" :key="index">
+        <button
+          @click="skip(index)"
+          v-if="a.has(index + 1)"
+          type="button"
+          class="btn btn-primary"
+        >
+          {{ index + 1 }}
+        </button>
 
-      <button @click="skip(index)" v-else type="button" class="btn btn-info">
-        {{ index + 1 }}
-      </button>
-    </span>
+        <button  @click="skip(index)" v-else type="button" class="btn btn-info">
+          {{ index + 1 }}
+        </button>
+      </span>
     </div>
   </div>
 </template>
  
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "Question",
   props: {
     list: Array,
+    score: Number,
   },
   data() {
     return {
-      answer:[ undefined],
-      itemIndexs: ["A", "B", "C", "D", "E"],
+      answer: [undefined],
       current: 0,
       a: new Map(),
     };
@@ -90,7 +92,7 @@ export default {
   methods: {
     skip: function (i) {
       this.current = i;
-      this.answer = this.a.get(this.current+1);
+      this.answer = this.a.get(this.current + 1);
     },
     setAnswer: function (id) {
       // 设置答案
@@ -117,6 +119,7 @@ export default {
         this.answer = this.a.get(this.current + 1);
       }
     },
+
     submit: function () {
       // 抛出了一个自定义的事件，对应的事件监听器会接收到
       this.$emit("on-submit");

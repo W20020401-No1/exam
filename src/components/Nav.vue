@@ -19,17 +19,17 @@
             >首页 <span class="sr-only">(current)</span></router-link
           >
         </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/single">单选</router-link>
+        <li class="nav-item ">
+          <router-link class="nav-link" to="/single" active-class="bg-white">单选</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/multil">多选</router-link>
+          <router-link class="nav-link" to="/multil" active-class="bg-white">多选</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/com">在线模拟</router-link>
+          <router-link class="nav-link" to="/com" active-class="bg-white">在线模拟</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/cuotiji">答题记录</router-link>
+          <router-link class="nav-link" to="/cuotiji" active-class="bg-white">答题记录</router-link>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
