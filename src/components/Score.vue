@@ -68,7 +68,7 @@
     </div>
   </div>
 </template>
- 
+
 <script>
 
 export default {
@@ -104,9 +104,7 @@ export default {
           }
         }
       };
-      
     },
-    
   },
   created() {
     for (const q of this.qlist) {
@@ -114,7 +112,6 @@ export default {
         this.score += 20;
       }
     }
-    
   },
   
 };

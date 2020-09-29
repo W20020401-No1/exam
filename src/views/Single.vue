@@ -47,7 +47,6 @@ name: 'App',
     },
     
   },
- 
 
 }
 </script>

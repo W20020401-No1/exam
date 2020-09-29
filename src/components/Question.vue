@@ -65,7 +65,7 @@
           {{ index + 1 }}
         </button>
 
-        <button  @click="skip(index)" v-else type="button" class="btn btn-info">
+        <button  @click="skip(index)" v-else type="button" class="btn btn-outline-info">
           {{ index + 1 }}
         </button>
       </span>
