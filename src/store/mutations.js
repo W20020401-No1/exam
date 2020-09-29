@@ -18,13 +18,23 @@ export default {
         console.log(state.str);
     },
     //添加答题记录
-    ADD(state,s){
-        console.log(s);
+    ADD(state, s) {
         state.cuotiji.push(s)
     },
+    //添加错题记录
+    mistake(state, s) {
+        for (let i = 0; i < s.ti.length; i++) {
+            if (s.daan[i].toString() != s.ti[i].right.toString()) {
+                if (state.cuoti.indexOf(s.ti[i]) < 0) {
+                    state.cuoti.push(s.ti[i]);
+                    //console.log(s.ti[i]);
+                }
+            }
+        }
+    },
     //查看详情记录
-    IND(state,s){
+    IND(state, s) {
         console.log(s);
-        state.ind=s
+        state.ind = s
     }
 }

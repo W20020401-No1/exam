@@ -53,10 +53,16 @@
               type="button"
               name=""
               id=""
-              :class="['btn', ms?'btn-danger':'btn-success', 'btn-lg', 'btn-block', 'mt-3']"
+              :class="[
+                'btn',
+                ms ? 'btn-danger' : 'btn-success',
+                'btn-lg',
+                'btn-block',
+                'mt-3',
+              ]"
               @click="xianshi"
             >
-              {{xianshis}}
+              {{ xianshis }}
             </button>
           </div>
           <!--正确答案与用户提交答案的对比-->
@@ -180,8 +186,15 @@
               </div>
             </div>
             <p class="text-center">
-              你的答案： <span class="badge badge-warning">{{ ss[index].length === 0 ? "无" : ss[index] }}</span>
-              <span class="float-right">正确答案：<span class="badge badge-warning">{{item.right }}</span></span>
+              你的答案：
+              <span class="badge badge-warning">{{
+                ss[index].length === 0 ? "无" : ss[index]
+              }}</span>
+              <span class="float-right"
+                >正确答案：<span class="badge badge-warning">{{
+                  item.right
+                }}</span></span
+              >
             </p>
           </div>
         </div>
@@ -191,7 +204,7 @@
 </template>
 <script>
 import "./js/jquery-3.3.1.min.js";
-import { mapState,mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -208,7 +221,7 @@ export default {
       ss: [],
       yanse: [],
       ms: false,
-      xianshis:'显示题目'
+      xianshis: "显示题目",
     };
   },
   computed: {
@@ -238,12 +251,10 @@ export default {
   methods: {
     xianshi() {
       this.ms = !this.ms;
-      if(this.ms){
-        this.xianshis='关闭显示'
-
-      }else{
-        this.xianshis='显示题目'
-
+      if (this.ms) {
+        this.xianshis = "关闭显示";
+      } else {
+        this.xianshis = "显示题目";
       }
     },
     next() {
@@ -271,7 +282,7 @@ export default {
       //获得前一题已选择的答案
       this.choose = this.results.get(this.now);
     },
-    ...mapActions(['adds']),
+    ...mapActions(["adds", "addct"]),
     score() {
       let count = 0;
       for (let entry of this.results) {
@@ -297,7 +308,8 @@ export default {
       this.results.forEach((aa) => {
         this.ss.push(aa);
       });
-      this.adds({ti:this.timu,daan:this.ss,total:this.total});
+      this.adds({ ti: this.timu, daan: this.ss, total: this.total });
+      this.addct({ ti: this.timu, daan: this.ss, total: this.total });
     },
   },
   mounted() {

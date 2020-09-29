@@ -14,7 +14,7 @@
         </thead>
         <tbody>
           <tr v-for="([k, v], index) in answers" :key="index">
-            <td>{{ [k] }}</td>
+            <td>{{ k }}</td>
             <td>
               <span class="badge badge-pill badge-danger">{{
                 correct(k)
@@ -68,7 +68,7 @@
     </div>
   </div>
 </template>
- 
+
 <script>
 
 export default {
@@ -104,9 +104,7 @@ export default {
           }
         }
       };
-      
     },
-    
   },
   created() {
     for (const q of this.qlist) {
@@ -114,7 +112,6 @@ export default {
         this.score += 20;
       }
     }
-    
   },
   
 };

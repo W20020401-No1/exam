@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-sm navbar-light bg-success">
-    <router-link class="navbar-brand" to="/">在线考试</router-link>
+  <nav class="navbar navbar-expand-sm navbar-light bg-info">
+    <router-link class="navbar-brand" to="/"><h1>在线考试</h1></router-link>
     <button
       class="navbar-toggler d-lg-none"
       type="button"
@@ -15,21 +15,34 @@
     <div class="collapse navbar-collapse" id="collapsibleNavId">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
-          <router-link class="nav-link" to="/"
+          <router-link class="nav-link text-light" to="/"
             >首页 <span class="sr-only">(current)</span></router-link
           >
         </li>
-        <li class="nav-item ">
-          <router-link class="nav-link" to="/single" active-class="bg-white">单选</router-link>
+        <li class="nav-item">
+          <router-link class="nav-link text-light" to="/single"
+            >单选</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/multilsingle" active-class="bg-white">多选</router-link>
+          <router-link class="nav-link text-light" to="/multilsingle"
+            >多选</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/com" active-class="bg-white">在线模拟</router-link>
+          <router-link class="nav-link text-light" to="/com"
+            >在线模拟</router-link
+          >
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/cuotiji" active-class="bg-white">答题记录</router-link>
+          <router-link class="nav-link text-light" to="/xiangqing"
+            >答题记录</router-link
+          >
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link text-light" to="/cuoti"
+            >错题集</router-link
+          >
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
@@ -41,7 +54,7 @@
         />
         <div @click="add">
           <router-link
-            class="btn btn-outline-danger my-2 my-sm-0"
+            class="btn btn-danger my-2 my-sm-0"
             type="submit"
             to="/search"
             :key="$route.fullPath"

@@ -36,7 +36,8 @@ export default {
       // 其他
       //
       for (const q of this.qlist) {
-        if (q.right.join("") === this.questions.get(q.id).join("")) {
+        
+        if (q.right.tostring('') === this.questions.get(q.id).tostring('')) {
           this.score += 20;
         }
       }
