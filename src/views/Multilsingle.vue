@@ -1,41 +1,42 @@
 <template>
   <div>
     <!-- 答题区域 -->
-    <Quiz @on-finish="finish" v-if="!isDone" />
+    <Multil @on-finish="finish" v-if="!isDone" />
 
     <!-- 成绩 -->
-    <Score :answers="questions" :qlist="qlist" v-else />
+    <Multilscore :answers="questions" :qlist="qlist" v-else />
   </div>
 </template>
 
 <script>
-import Quiz from "../components/Quiz";
-import Score from "../components/Score";
+import Multil from "../components/Multil";
+import Multilscore from "../components/Multilscore";
 import { mapActions } from "vuex";
-
 export default {
   name: "App",
   components: {
-    Quiz,
-    Score,
+    Multil,
+    Multilscore,
   },
   data() {
     return {
       isDone: false,
       questions: new Map(),
       qlist: [],
-      q: [],
-      score: 0,
+      q:[],
+      score:0
     };
   },
   methods: {
     ...mapActions(["adds"]),
-    finish: function (qe, l) {
-      this.isDone = true;
-      (this.questions = qe), (this.qlist = l);
+    finish: function (q, l) {
+      this.isDone = true
+      this.questions = q
+      this.qlist = l
       // 其他
+      //
       for (const q of this.qlist) {
-        if (q.right === this.questions.get(q.id)) {
+        if (q.right.join("") === this.questions.get(q.id).join("")) {
           this.score += 20;
         }
       }

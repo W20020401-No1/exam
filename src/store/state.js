@@ -1,12 +1,11 @@
 import single from "./json/single.json";
 import multipart from "./json/multipart.json";
-export default {
+export default{
     single,
     multipart,
-    str: [],
+    str:[],
     //答题记录
-    cuotiji: [],
+    cuotiji:[],
     //答题记录单个详细信息index
-    ind: -1,
-    cuoti: []
+    ind:-1
 }

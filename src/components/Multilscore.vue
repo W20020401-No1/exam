@@ -14,22 +14,31 @@
         </thead>
         <tbody>
           <tr v-for="([k, v], index) in answers" :key="index">
-            <td>{{ [k] }}</td>
+            <td>{{ k }}</td>
             <td>
-              <span class="badge badge-pill badge-danger">{{
-                correct(k)
-              }}</span>
+              <span
+              v-for="(item, index) in correct(k)" :key="index"
+               class="badge badge-pill badge-danger mr-1">
+                {{item}}
+              </span>
             </td>
             <td>
               <span
-                v-if="v === correct(k)"
-                class="badge badge-pill badge-danger"
-                >{{ v }}</span
-              >
-              <span v-else class="badge badge-pill badge-primary">{{ v }}</span>
+                v-if="v.join('') === correct(k).join('')"
+                >
+                <span
+              v-for="(item, index) in v" :key="index"
+               class="badge badge-pill badge-danger mr-1">
+                {{item}}
+              </span></span>
+              <span v-else ><span
+              v-for="(item, index) in v" :key="index"
+               class="badge badge-pill badge-primary mr-1">
+                {{item}}
+              </span></span>
             </td>
             <td>
-              {{ v === correct(k) ? 20 : 0 }}
+              {{ v.join('') === correct(k).join('') ? 20 : 0 }}
             </td>
           </tr>
           <tr class="h3">
@@ -110,7 +119,7 @@ export default {
   },
   created() {
     for (const q of this.qlist) {
-      if (q.right === this.answers.get(q.id)) {
+      if (q.right.join('') === this.answers.get(q.id).join('')) {
         this.score += 20;
       }
     }
