@@ -32,7 +32,7 @@
               {{ v === correct(k) ? 20 : 0 }}
             </td>
           </tr>
-          <tr class="h3">
+          <tr class="h3">1
             <td colspan="3">总成绩</td>
             <td>{{ score }}</td>
           </tr>
